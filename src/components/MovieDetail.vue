@@ -28,6 +28,9 @@
         Sign In to Add a Review
       </button></router-link
     >
+    <br />
+    <br />
+    <router-view />
   </div>
 </template>
 
