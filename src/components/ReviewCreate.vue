@@ -68,7 +68,7 @@ export default {
       };
       axios
         .post("/reviews", myReview, {
-          headers: { Authorization: `Bearer ${this.$store.token}` },
+          headers: { Authorization: `Bearer ${this.$store.state.token}` },
         })
         .then(() => {
           this.$router.replace("/account");
