@@ -34,8 +34,8 @@
           placeholder="Enter email"
           v-model="email"
         />
-        <small v-if="dumpEmail" class="text-danger">
-          Please chose a differnt email</small
+        <small v-if="dupEmail" class="text-danger">
+          Please chose a different email</small
         >
       </div>
       <div class="mb-3">
