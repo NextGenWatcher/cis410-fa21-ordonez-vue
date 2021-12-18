@@ -2,13 +2,13 @@
   <div>
     <h1>Account</h1>
     <hr />
-    <h3>Rides</h3>
+    <h3>Ride History</h3>
     <p v-if="accountError" class="text-danger">
       Cannot get your account informaiton, please try again later>
     </p>
     <table v-if="ridesByUser" class="table">
       <thead>
-        <th>Rides Completed</th>
+        <th>Ride PK</th>
         <th>First Name</th>
         <th>Last Name</th>
         <th>From</th>

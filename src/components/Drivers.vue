@@ -1,13 +1,13 @@
 <template>
   <div>
-    <h1>Drivers</h1>
+    <h1>Get A Ride</h1>
     <hr />
     <table class="table">
       <thead>
         <tr>
           <th>First Name</th>
           <th>Last Name</th>
-          <th>Car Model</th>
+          <th>Vehicle Type</th>
           <th></th>
         </tr>
       </thead>

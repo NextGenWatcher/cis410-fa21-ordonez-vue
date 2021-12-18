@@ -4,10 +4,10 @@
       <div class="col-lg-10">
         <div class="card">
           <div class="card-body">
-            <h4>Create a Review</h4>
+            <h4>Order A Ride</h4>
             <form id="review-form" @submit.prevent="submitReview">
               <div class="mb-3">
-                <label for="DriverPK-input" class="form-label">DriverFk</label
+                <label for="DriverPK-input" class="form-label">Driver Fk</label
                 ><input
                   type="number"
                   class="form-control"
@@ -42,8 +42,7 @@
                   v-model="LocationFrom"
                 />
               </div>
-              <button type="submit" class="btn btn-primary">
-                Submit Review</button
+              <button type="submit" class="btn btn-primary">Submit Order</button
               ><button
                 v-on:click="cancelReview"
                 type="clear"

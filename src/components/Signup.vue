@@ -3,7 +3,7 @@
     <h1>Sign Up</h1>
     <form @submit.prevent="onSubmit">
       <div class="mb-3">
-        <label for="fname-input" class="form-label">First name</label
+        <label for="fname-input" class="form-label">First Name</label
         ><input
           type="text"
           class="form-control"
@@ -14,7 +14,7 @@
         />
       </div>
       <div class="mb-3">
-        <label for="lname-input" class="form-label">Last name</label
+        <label for="lname-input" class="form-label">Last Name</label
         ><input
           type="text"
           class="form-control"

@@ -5,33 +5,30 @@
         <h2 class="text-primary">{{ driver.DriverFirstName }}</h2>
         <br />
         <p>
-          Pitch Text: <br /><strong>{{ driver.DriverLastName }}</strong>
+          Last Name: <br /><strong>{{ driver.DriverLastName }}</strong>
         </p>
         <p>
-          Summary: <br /><strong>{{ driver.DriverPK }}</strong>
+          Driver PK: <br /><strong>{{ driver.DriverPK }}</strong>
         </p>
         <p>
-          Budget: <br /><strong>{{ formattedBudget }}</strong>
+          Vehicle FK: <br /><strong>{{ driver.VehicleFK }}</strong>
         </p>
         <p>
-          Genre: <br /><strong>{{ driver.VehicleFK }}</strong>
+          Vhicle PK: <br /><strong>{{ driver.VehiclePK }}</strong>
         </p>
         <p>
-          Genre: <br /><strong>{{ driver.VehiclePK }}</strong>
-        </p>
-        <p>
-          Genre: <br /><strong>{{ driver.VehicleType }}</strong>
+          Vehicle Type: <br /><strong>{{ driver.VehicleType }}</strong>
         </p>
       </div>
     </div>
     <br />
     <router-link v-if="auth" :to="`/drivers/${this.$route.params.pk}/ride`"
-      ><button class="btn btn-success">Add a Review</button></router-link
+      ><button class="btn btn-success">Order</button></router-link
     >
 
     <router-link v-else :to="`/login`"
       ><button class="btn btn-outline-success">
-        Sign In to Add a Review
+        Sign In to Order A Ride
       </button></router-link
     >
     <br />
@@ -52,12 +49,12 @@ export default {
       console.log("asdfasdfasf", thisDriver);
       return thisDriver;
     },
-    formattedBudget() {
-      return new Intl.NumberFormat("en-US", {
-        style: "currency",
-        currency: "USD",
-      }).format(this.driver.Budget);
-    },
+    // formattedBudget() {
+    //   return new Intl.NumberFormat("en-US", {
+    //     style: "currency",
+    //     currency: "USD",
+    //   }).format(this.driver.Budget);
+    // },
     auth() {
       return this.$store.state.token;
     },
