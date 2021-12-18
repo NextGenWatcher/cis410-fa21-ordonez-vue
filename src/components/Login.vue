@@ -54,14 +54,14 @@ export default {
   methods: {
     onSumbit() {
       let myFormData = {
-        email: this.email,
-        password: this.password,
+        Email: this.email,
+        Password: this.password,
       };
 
       //console.log("the forma data", myFormData);
 
       axios
-        .post("/contacts/login", myFormData)
+        .post("/customers/login", myFormData)
         .then((myResponse) => {
           //console.log("the response", myResponsen);
 
@@ -71,7 +71,7 @@ export default {
           this.$router.replace("/account");
         })
         .catch((myError) => {
-          console.log("error in /contacts/login", myError);
+          console.log("error in /customers/login", myError);
 
           if (myError.response.status == 401) {
             this.credentialsError = true;

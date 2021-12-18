@@ -10,7 +10,7 @@
           id="fname-input"
           required=""
           placeholder="First name"
-          v-model="nameFirst"
+          v-model="FirstName"
         />
       </div>
       <div class="mb-3">
@@ -21,32 +21,32 @@
           id="lname-input"
           required=""
           placeholder="Last name"
-          v-model="nameLast"
+          v-model="LastName"
         />
       </div>
       <div class="mb-3">
-        <label for="email-input" class="form-label">Email</label
+        <label for="Email-input" class="form-label">Email</label
         ><input
-          type="email"
+          type="Email"
           class="form-control"
-          id="email-input"
+          id="Email-input"
           required=""
-          placeholder="Enter email"
-          v-model="email"
+          placeholder="Enter Email"
+          v-model="Email"
         />
         <small v-if="dupEmail" class="text-danger">
-          Please chose a different email</small
+          Please chose a different Email</small
         >
       </div>
       <div class="mb-3">
-        <label for="password-input" class="form-label">Password</label
+        <label for="Password-input" class="form-label">Password</label
         ><input
-          type="password"
+          type="Password"
           class="form-control"
-          id="password-input"
+          id="Password-input"
           placeholder="Password"
           required=""
-          v-model="password"
+          v-model="Password"
         />
       </div>
       <button type="submit" class="btn btn-primary">Submit</button>
@@ -60,10 +60,10 @@ import axios from "axios";
 export default {
   date() {
     return {
-      nameFirst: "",
-      nameLast: "",
-      email: "",
-      password: "",
+      FirstName: "",
+      LastName: "",
+      Email: "",
+      Password: "",
       errorMessage: "",
       dupEmail: false,
     };
@@ -73,14 +73,14 @@ export default {
     onSubmit() {
       // console.log("form sumbitted");
       const myFormData = {
-        nameFirst: this.nameFirst,
-        nameLast: this.nameLast,
-        email: this.email,
-        password: this.password,
+        FirstName: this.FirstName,
+        LastName: this.LastName,
+        Email: this.Email,
+        Password: this.Password,
       };
       // console.log(myFormData);
       axios
-        .post("/contacts", myFormData)
+        .post("/customers", myFormData)
         .then((myResponse) => {
           console.log("the response", myResponse);
           this.$router.replace("/login?signupsuccess=true");

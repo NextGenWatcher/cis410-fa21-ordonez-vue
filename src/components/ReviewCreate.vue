@@ -7,26 +7,39 @@
             <h4>Create a Review</h4>
             <form id="review-form" @submit.prevent="submitReview">
               <div class="mb-3">
-                <label for="rating-input" class="form-label">Rating</label
+                <label for="DriverPK-input" class="form-label">DriverFk</label
                 ><input
                   type="number"
                   class="form-control"
-                  id="rating-input"
+                  id="DriverPK-input"
                   required=""
                   min="1"
                   max="10"
-                  v-model="rating"
+                  v-model="DriverFK"
                 />
               </div>
               <div class="mb-3">
-                <label for="summary-input" class="form-label">Review</label
+                <label for="LocationTo-input" class="form-label"
+                  >Location To</label
                 ><input
                   type="text"
                   row="3"
                   class="form-control"
-                  id="summary-input"
+                  id="LocationTo-input"
                   required=""
-                  v-model="summary"
+                  v-model="LocationTo"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="LocationFrom-input" class="form-label"
+                  >Location From</label
+                ><input
+                  type="text"
+                  row="3"
+                  class="form-control"
+                  id="LocationFrom-input"
+                  required=""
+                  v-model="LocationFrom"
                 />
               </div>
               <button type="submit" class="btn btn-primary">
@@ -54,28 +67,31 @@ import axios from "axios";
 export default {
   data() {
     return {
-      rating: null,
-      summary: "",
+      DriverFK: null,
+      LocationTo: "",
+      LocationFrom: "",
       errorMessage: null,
     };
   },
   methods: {
     submitReview() {
       let myReview = {
-        rating: this.rating,
-        summary: this.summary,
-        movieFK: this.$route.params.pk,
+        DriverFK: this.DriverFK,
+        LocationTo: this.LocationTo,
+        LocationFrom: this.LocationFrom,
       };
       axios
-        .post("/reviews", myReview, {
+        .post("/rides", myReview, {
           headers: { Authorization: `Bearer ${this.$store.state.token}` },
         })
         .then(() => {
           this.$router.replace("/account");
+          console.log("check1", myReview);
         })
         .catch(() => {
           this.errorMessage =
             "Unable to create a review, please try again later";
+          console.log("check2", myReview);
         });
     },
 

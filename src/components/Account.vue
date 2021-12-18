@@ -2,25 +2,29 @@
   <div>
     <h1>Account</h1>
     <hr />
-    <h3>{{ firstName }}'s Reviews</h3>
+    <h3>Rides</h3>
     <p v-if="accountError" class="text-danger">
       Cannot get your account informaiton, please try again later>
     </p>
-    <table v-if="reviewsByUser" class="table">
+    <table v-if="ridesByUser" class="table">
       <thead>
-        <th>Title</th>
-        <th>Summary</th>
-        <th>Rating</th>
+        <th>Rides Completed</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>From</th>
+        <th>To</th>
       </thead>
       <tbody>
-        <tr v-for="thisReview in reviewsByUser" :key="thisReview.ReviewPK">
+        <tr v-for="thisRide in ridesByUser" :key="thisRide.RidePK">
           <th>
-            <router-link :to="`/movies/${thisReview.MovieFK}`">{{
-              thisReview.Title
+            <router-link :to="`/drivers/${thisRide.DriverFK}`">{{
+              thisRide.DriverPK
             }}</router-link>
           </th>
-          <th>{{ thisReview.Summary }}</th>
-          <th>{{ thisReview.Rating }}</th>
+          <th>{{ thisRide.DriverFirstName }}</th>
+          <th>{{ thisRide.DriverLastName }}</th>
+          <th>{{ thisRide.LocationFrom }}</th>
+          <th>{{ thisRide.LocationTo }}</th>
         </tr>
       </tbody>
     </table>
@@ -33,27 +37,27 @@ import axios from "axios";
 export default {
   data() {
     return {
-      reviewsByUser: null,
+      ridesByUser: null,
       accountError: false,
     };
   },
   computed: {
     firstName() {
       console.log("here is the store so far", this.$store.state);
-      return this.$store.state.user.NameFirst;
+      return this.$store.state.user.FirstName;
     },
   },
 
   created() {
     axios
-      .get("/reviews/me", {
+      .get("/rides/me", {
         headers: {
           Authorization: `Bearer ${this.$store.state.token}`,
         },
       })
       .then((theResponse) => {
         console.log("here is the reponse", theResponse);
-        this.reviewsByUser = theResponse.data;
+        this.ridesByUser = theResponse.data;
       })
       .catch(() => {
         this.accountError = true;

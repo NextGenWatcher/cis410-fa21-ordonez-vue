@@ -2,24 +2,30 @@
   <div>
     <div class="card">
       <div class="card-body">
-        <h2 class="text-primary">{{ movie.Title }}</h2>
+        <h2 class="text-primary">{{ driver.DriverFirstName }}</h2>
         <br />
         <p>
-          Pitch Text: <br /><strong>{{ movie.PitchText }}</strong>
+          Pitch Text: <br /><strong>{{ driver.DriverLastName }}</strong>
         </p>
         <p>
-          Summary: <br /><strong>{{ movie.Summary }}</strong>
+          Summary: <br /><strong>{{ driver.DriverPK }}</strong>
         </p>
         <p>
           Budget: <br /><strong>{{ formattedBudget }}</strong>
         </p>
         <p>
-          Genre: <br /><strong>{{ movie.GenreName }}</strong>
+          Genre: <br /><strong>{{ driver.VehicleFK }}</strong>
+        </p>
+        <p>
+          Genre: <br /><strong>{{ driver.VehiclePK }}</strong>
+        </p>
+        <p>
+          Genre: <br /><strong>{{ driver.VehicleType }}</strong>
         </p>
       </div>
     </div>
     <br />
-    <router-link v-if="auth" :to="`/movies/${this.$route.params.pk}/review`"
+    <router-link v-if="auth" :to="`/drivers/${this.$route.params.pk}/ride`"
       ><button class="btn btn-success">Add a Review</button></router-link
     >
 
@@ -37,19 +43,20 @@
 <script>
 export default {
   computed: {
-    movie() {
-      let allMovies = this.$store.state.movies;
+    driver() {
+      let allDrivers = this.$store.state.driver;
 
-      let thisMovie = allMovies.find((aMovie) => {
-        return aMovie.MoviePK == this.$route.params.pk;
+      let thisDriver = allDrivers.find((aDriver) => {
+        return aDriver.DriverPK == this.$route.params.pk;
       });
-      return thisMovie;
+      console.log("asdfasdfasf", thisDriver);
+      return thisDriver;
     },
     formattedBudget() {
       return new Intl.NumberFormat("en-US", {
         style: "currency",
         currency: "USD",
-      }).format(this.movie.Budget);
+      }).format(this.driver.Budget);
     },
     auth() {
       return this.$store.state.token;

@@ -4,8 +4,7 @@
     <br />
     <p>Buddy the Elf, whats you favorite color?</p>
     <p>
-      Elf is my favorite Christmas movie for sure and thank you for an awesome
-      semester!
+     
     </p>
   </div>
   <body>
